@@ -8,9 +8,6 @@ from deepspeech import Model
 
 
 class SpeechToTextEngine:
-    def __init__(self):
-        self.model = Model(model_path=Path(__file__).parents[1].joinpath('model.pbmm').absolute().as_posix())
-
     def normalize_audio(self, audio):
         out, err = ffmpeg.input('pipe:0') \
             .output('pipe:1', f='WAV', acodec='pcm_s16le', ac=1, ar='16k', loglevel='error', hide_banner=None) \
@@ -18,6 +15,12 @@ class SpeechToTextEngine:
         if err:
             raise Exception(err)
         return out
+
+    def getModelFile(self, lang_key, file_name):
+        return Path(__file__).parents[1].joinpath('models').joinpath(lang_key).joinpath(file_name).absolute().as_posix()
+
+    def setLang(self, lang_key):
+        self.model = Model(model_path=self.getModelFile(lang_key, 'output_graph.pbmm'))
 
     def run(self, audio):
         audio = self.normalize_audio(audio)

@@ -7,4 +7,4 @@ services:
       - 12367:8000
     restart: 'unless-stopped'
     volumes:
-      - './model.pbmm:/app/model.pbmm:ro'
+      - './models/:/app/models/:ro'
