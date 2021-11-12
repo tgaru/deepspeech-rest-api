@@ -1,6 +1,6 @@
 #!/bin/sh
 
-apt intall wget
+apt install wget
 
 # EN
 mkdir models/en/
