@@ -1,9 +1,8 @@
 import wave
-from io import BytesIO
-from pathlib import Path
-
 import ffmpeg
 import numpy as np
+from io import BytesIO
+from pathlib import Path
 from deepspeech import Model
 
 

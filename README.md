@@ -14,7 +14,7 @@ POST /api/v1/stt - Just look at curl command below.
 Speech data may be provided in whatever audio format which ffmpeg is able to convert to wav,
 so you probably don't have to worry about this at all.
 
-$ curl -X POST -F "speech=@speech.mp3" -F "lang=en" http://127.0.0.1:8000/api/v1/stt 
+$ curl -X POST -F "speech=@speech.mp3" -F "lang=en" http://127.0.0.1:12367/api/v1/stt 
 
 {
     "status": "success",

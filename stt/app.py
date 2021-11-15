@@ -1,21 +1,16 @@
 from os import getenv
-
 from concurrent.futures import ThreadPoolExecutor
 from sanic import Sanic
 from sanic.response import json
 from sanic.exceptions import InvalidUsage
-
 from .engine import SpeechToTextEngine
-
 
 MAX_ENGINE_WORKERS = int(getenv('MAX_ENGINE_WORKERS', 2))
 LANGUAGES_LIST = ['en', 'it', 'zh-CN']
 
 engine = SpeechToTextEngine()
 executor = ThreadPoolExecutor(max_workers=MAX_ENGINE_WORKERS)
-
 app = Sanic()
-
 
 def error(message):
     return json({
